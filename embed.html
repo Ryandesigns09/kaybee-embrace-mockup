@@ -192,8 +192,19 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15p
     root.style.width=design+'px';
     root.style.transform='scale('+s+')';
     var h=Math.round(root.offsetHeight*s);
-    document.body.style.height=h+'px'; document.documentElement.style.height=h+'px';
-    window.__fit={design:design,scale:s,natural:root.offsetHeight,height:h};
+    /* If the host iframe is shorter than the scaled content (the Wix mobile layout caps the embed height),
+       let the content scroll inside the iframe instead of being cut off. */
+    var vh=window.innerHeight, scroller=document.getElementById('fit-scroll');
+    if(vh && h>vh+8){
+      if(!scroller){ scroller=document.createElement('div'); scroller.id='fit-scroll'; document.body.appendChild(scroller); scroller.appendChild(root); }
+      scroller.style.cssText='height:'+vh+'px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain';
+      root.style.height=root.offsetHeight+'px';
+      document.body.style.height=vh+'px'; document.documentElement.style.height=vh+'px';
+    } else {
+      if(scroller){ document.body.appendChild(root); scroller.remove(); root.style.height=''; }
+      document.body.style.height=h+'px'; document.documentElement.style.height=h+'px';
+    }
+    window.__fit={design:design,scale:s,natural:root.offsetHeight,height:h,viewport:vh,scrolling:!!(vh&&h>vh+8)};
   }
   wrap(); fit();
   window.addEventListener('resize',fit);
