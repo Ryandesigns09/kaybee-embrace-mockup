@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaybee Village · Every family deserves a village</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--deep:#0F3B3A;--paper:#FBF8F3;--seafoam:#CFE3DC;--coral:#C4492D;--lagoon:#2E7D74;--sun:#F2B544;--ink:#0F3B3A;--line:#CFE3DC;--display:'Bricolage Grotesque','Arial Black',sans-serif;--body:'Instrument Sans',system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.015em;line-height:1.02;margin:0}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px}
+@media(max-width:900px){.wrap{padding:0 20px}}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lagoon)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}.btn.sun{background:var(--sun);color:var(--deep)}.btn.deep{background:var(--deep);color:var(--paper)}.btn.lagoon{background:var(--lagoon);color:var(--paper)}
+.btn.ghost{border-color:rgba(251,248,243,.7);color:var(--paper)}.btn.ghost-deep{border-color:var(--deep);color:var(--deep)}
+.mark{display:block;flex:none}
+.hero{background:var(--deep);color:var(--paper)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:88px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.01em}
+.links{display:flex;gap:30px;font-size:15px;font-weight:500;color:rgba(251,248,243,.82)}.links a:hover{color:var(--paper)}
+.navbtns{display:flex;gap:10px}.navbtns .btn{height:42px;padding:0 20px;font-size:14px}
+.menu{display:none;width:42px;height:42px;border-radius:999px;border:1.5px solid rgba(251,248,243,.5);align-items:center;justify-content:center;color:var(--paper)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:72px 0 40px}
+.hero h1{font-size:clamp(44px,5.6vw,80px);color:var(--paper)}.hero h1 em{font-style:normal;color:var(--sun)}
+.hero p{max-width:540px;font-size:18px;color:rgba(251,248,243,.86);margin:0}
+.hero .eyebrow{color:var(--seafoam)}.hero-copy{display:flex;flex-direction:column;gap:24px}
+.cluster{position:relative;height:560px}
+.c{position:absolute;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.c img{width:100%;height:100%;object-fit:cover}
+.c1{left:40%;top:4%;width:330px;height:330px;background:var(--seafoam)}
+.c2{left:6%;top:43%;width:240px;height:240px;background:var(--coral)}
+.c3{left:66%;top:64%;width:150px;height:150px;background:var(--sun)}
+.strip{display:flex;align-items:center;gap:10px;padding:10px;border-radius:18px;background:var(--paper);color:var(--deep);margin:8px 0 64px;flex-wrap:wrap}
+.toggle{display:flex;gap:4px;padding:4px;border-radius:12px;background:var(--seafoam)}
+.toggle span{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:9px;font-size:14px;font-weight:600;white-space:nowrap}.toggle .on{background:var(--deep);color:var(--paper)}
+.strip a.q{display:inline-flex;align-items:center;height:48px;padding:0 18px;border-radius:12px;border:1px solid var(--seafoam);font-size:14px;font-weight:600;white-space:nowrap}
+.strip a.q:hover{background:var(--seafoam)}
+section{padding:96px 0}
+.h2{font-size:clamp(34px,3.6vw,52px)}.lead{font-size:18px;color:var(--lagoon);max-width:620px;margin:16px 0 0}
+.rows{margin-top:48px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:260px 1fr auto;gap:32px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
+.row .name{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:24px}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.row p{margin:0;color:#2b4a48;max-width:640px}
+.band{background:var(--seafoam)}.quote{font-family:var(--display);font-weight:600;font-size:clamp(24px,2.6vw,36px);line-height:1.25;max-width:980px}
+.quote .q{color:var(--coral);font-size:1.6em;line-height:0;vertical-align:-.3em;margin-right:6px}
+.cite{margin-top:20px;font-size:15px;color:var(--lagoon);font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:48px}
+.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 28px 30px;display:flex;flex-direction:column;gap:10px;min-height:230px}
+.step .n{font-family:var(--display);font-weight:800;font-size:40px;line-height:1;color:var(--sun)}
+.step h3{font-size:22px;line-height:1.15}.step p{margin:0;color:#2b4a48;font-size:15px}
+.step.dark{background:var(--deep);color:var(--paper);border-color:var(--deep)}.step.dark p{color:rgba(251,248,243,.82)}
+.kay{display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:center}
+.kayphoto{width:380px;height:380px;border-radius:50%;background:var(--coral);overflow:hidden;position:relative}.kayphoto img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.creds{font-size:14px;color:var(--lagoon);font-weight:600;letter-spacing:.02em;margin-top:8px}
+.kay p{color:#2b4a48;margin:18px 0 0}
+.classes{margin-top:40px;border-top:1px solid var(--line)}
+.cls{display:grid;grid-template-columns:150px 1fr 220px 120px auto;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.cls .when{font-size:13px;color:var(--lagoon);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.cls .t{font-family:var(--display);font-weight:800;font-size:20px}.cls .f{font-size:14px;color:#2b4a48}.cls .pr{font-weight:600}
+.cls .btn{height:44px;padding:0 20px;font-size:14px}
+.cta{background:var(--sun);color:var(--deep)}.cta .inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta h2{font-size:clamp(30px,3.4vw,48px);max-width:720px}.cta p{margin:10px 0 0;max-width:620px;color:#3a3a2a}
+footer{background:var(--deep);color:var(--paper);padding:72px 0 36px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.fh{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--seafoam);margin-bottom:14px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15px;color:rgba(251,248,243,.82)}footer ul a:hover{color:var(--paper)}
+.ftag{margin:16px 0 0;max-width:360px;color:rgba(251,248,243,.78);font-size:15px}
+.fbot{margin-top:56px;padding-top:24px;border-top:1px solid rgba(251,248,243,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(251,248,243,.7)}
+.donate{color:var(--sun);font-weight:600}
+@media(max-width:1100px){.links{display:none}.navbtns .ghost{display:none}.menu{display:inline-flex}.row{grid-template-columns:1fr;gap:12px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.kay{grid-template-columns:1fr;gap:36px}.cls{grid-template-columns:1fr 1fr;gap:10px}.cls .when{grid-column:1/-1}.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:28px;padding-top:36px}.cluster{height:380px}.c1{width:230px;height:230px;left:38%;top:0}.c2{width:170px;height:170px;left:2%;top:40%}.c3{width:110px;height:110px;left:64%;top:62%}.kayphoto{width:280px;height:280px}section{padding:64px 0}.steps{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Holistic doula care · NYC &amp; nationwide</div>
+        <h1>Every family<br>deserves a<br><em>village.</em></h1>
+        <p>Birth and postpartum doulas, classes and lactation support, rooted in ancestral Garifuna wisdom and modern evidence-based care.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap"><a class="btn sun" href="/find-a-doula" target="_top">Find a Doula</a><a class="btn ghost" href="/contact" target="_top">Book a free consultation</a></div>
+      </div>
+      <div class="cluster" aria-hidden="true">
+        <div class="c c1"><img src="https://static.wixstatic.com/media/efbda5_6ba593bf71f043a6a786de002239a457~mv2.jpg" alt=""></div>
+        <div class="c c2"><img src="https://static.wixstatic.com/media/efbda5_4c6c28b31b5a46b9b6ffd4cde5f5a565~mv2.png" alt="" style="object-fit:contain;padding:14px"></div>
+        <div class="c c3"></div>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="toggle"><span class="on">I'm a family</span><span>I'm a birth professional</span></div>
+      <a class="q" href="/find-a-doula" target="_top">Find a doula →</a>
+      <a class="q" href="/lactation" target="_top">Book lactation support →</a>
+      <a class="q" href="/education" target="_top">Browse classes →</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 class="h2">One village,<br>three ways to care.</h2>
+    <p class="lead">Kaybee Village is a collective: a group of birth workers who show up together, so every family is held by more than one pair of hands.</p>
+    <div class="rows">
+      <div class="row"><div class="name"><span class="dot" style="background:var(--coral)"></span>Doula Collective</div><p>Birth and postpartum doulas, matched to your family by Kay herself after a real conversation. Prenatal visits, labor support, newborn care, meal prep and overnight help, as your family needs it.</p><a class="btn ghost-deep" href="/find-a-doula" target="_top">Find a Doula</a></div>
+      <div class="row"><div class="name"><span class="dot" style="background:var(--lagoon)"></span>Education</div><p>Spinning Babies®, newborn prep, lactation and new-parent classes for families, plus CAPPA training and mentorship for birth workers who want to grow.</p><a class="btn ghost-deep" href="/education" target="_top">Browse classes</a></div>
+      <div class="row"><div class="name"><span class="dot" style="background:var(--sun)"></span>Lactation</div><p>Certified lactation counseling in your home or online, from the first latch to pumping, supply and weaning, with partner professionals you can book directly.</p><a class="btn ghost-deep" href="/lactation" target="_top">Book lactation support</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="quote"><span class="q">“</span>[A family testimonial, one or two sentences, supplied by Kay.]</div>
+    <div class="cite">— Name, Brooklyn · birth and postpartum care</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="h2">Matched by a person,<br>not an algorithm.</h2>
+    <p class="lead">Kay reads every inquiry and makes every introduction herself. Here is how it works.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Tell us about you</h3><p>A short form about your due date, where you live, the support you are looking for and what matters to you.</p></div>
+      <div class="step"><div class="n">2</div><h3>Talk with Kay</h3><p>A free consultation, by phone or video, to get to know each other and answer your questions.</p></div>
+      <div class="step"><div class="n">3</div><h3>Meet your doulas</h3><p>Kay introduces you to one or two doulas from the collective who fit your needs, budget and neighbourhood.</p></div>
+      <div class="step dark"><div class="n">4</div><h3>Care begins</h3><p>Your doula, and the village behind her, are with you from pregnancy through the fourth trimester.</p></div>
+    </div>
+    <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap"><a class="btn deep" href="/find-a-doula" target="_top">Start with the form</a><a class="btn ghost-deep" href="/contact" target="_top">Book a free consultation</a></div>
+  </div>
+</section>
+
+<section style="padding-top:32px">
+  <div class="wrap">
+    <div class="kay">
+      <div class="kayphoto"><img src="https://static.wixstatic.com/media/a49346_be14db52c3484591af8f03b75af5d841~mv2.jpg" alt="Kay Beach"></div>
+      <div>
+        <div class="eyebrow">Founder</div>
+        <h2 class="h2" style="margin-top:10px">Kay Beach</h2>
+        <div class="creds">CD (DONA) · CPD · CNPE · CPNE · AdvNCS · SpBCPE · CBE · CLSC · VCD</div>
+        <p>Kay is a birth and postpartum doula, lactation counselor, newborn care specialist and educator. Her approach comes from her Garifuna heritage and her own early years as a young mom in the Caribbean, surrounded by a community that brought meals, did the laundry and held the baby so she could rest.</p>
+        <p>When she moved to the United States she saw that not every family has that village. Kaybee Village is her answer: ancestral and cultural wisdom, blended with modern evidence-based care, and a collective of birth workers who show up together.</p>
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap"><a class="btn deep" href="/about-kay" target="_top">About Kay</a><a class="btn ghost-deep" href="/contact" target="_top">Say hello</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:48px">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div><h2 class="h2">Upcoming classes</h2><p class="lead">Small groups in Brooklyn and online. Private in-home sessions on request.</p></div>
+      <a class="btn ghost-deep" href="/education" target="_top">All classes &amp; workshops</a>
+    </div>
+    <div class="classes">
+      <div class="cls"><div class="when">Dates on request</div><div><div class="t">Spinning Babies® Parent Class</div><div class="f">Positioning and movement for a smoother birth.</div></div><div class="f">In person · small group or private</div><div class="pr">$200</div><a class="btn lagoon" href="/education" target="_top">Book</a></div>
+      <div class="cls"><div class="when">Dates on request</div><div><div class="t">Newborn Prep Class</div><div class="f">Feeding, soothing, sleep and the first weeks at home.</div></div><div class="f">In person or online</div><div class="pr">$200</div><a class="btn lagoon" href="/education" target="_top">Book</a></div>
+      <div class="cls"><div class="when">Online · anytime</div><div><div class="t">It's All in the Milk · Lactation Class</div><div class="f">Latch, supply, pumping and when to ask for help.</div></div><div class="f">Online course or in person</div><div class="pr">from $129</div><a class="btn lagoon" href="/lactation" target="_top">Book</a></div>
+      <div class="cls"><div class="when">Dates on request</div><div><div class="t">New Parent Education</div><div class="f">Caregiving basics and your baby's cues, with confidence.</div></div><div class="f">In person or online</div><div class="pr">$200</div><a class="btn lagoon" href="/education" target="_top">Book</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap inner">
+    <div><div class="eyebrow" style="color:#5a4a1a">For birth workers</div><h2 style="margin-top:10px">Birth worker? Join the Collective.</h2><p>Doulas, lactation counselors and newborn care specialists who want a village of their own: shared referrals, mentorship and families who are ready for care.</p></div>
+    <a class="btn deep" href="/join-the-collective" target="_top">Apply to join</a>
+  </div>
+</section>
+
+
+</body>
+</html>
