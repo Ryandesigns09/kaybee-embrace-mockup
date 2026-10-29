@@ -203,5 +203,20 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15p
   var n=0, t=setInterval(function(){ fit(); if(++n>20) clearInterval(t); },250);
 })();
 </script>
+<script>
+/* Wix sandboxes this iframe without allow-top-navigation, so internal links cannot change the parent page directly.
+   We post the target to the parent (a Velo onMessage handler can call wixLocation.to) and, if the parent has not
+   navigated away shortly after, open the page in a new tab as a fallback. */
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]'); if(!a) return;
+    var href=a.getAttribute('href'); if(!href||href.charAt(0)!=='/') return;
+    e.preventDefault();
+    var url=location.search.indexOf('base=')>-1 ? decodeURIComponent(location.search.split('base=')[1].split('&')[0]).replace(/\/$/,'')+href : href;
+    try{ parent.postMessage({kvNav:href,url:url},'*'); }catch(err){}
+    setTimeout(function(){ window.open(url,'_blank','noopener'); },900);
+  },true);
+})();
+</script>
 </body>
 </html>
