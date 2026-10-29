@@ -199,7 +199,8 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15p
   window.addEventListener('resize',fit);
   window.addEventListener('load',fit);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
-  if(window.ResizeObserver) new ResizeObserver(fit).observe(root);
+  if(window.ResizeObserver){ new ResizeObserver(fit).observe(root); new ResizeObserver(fit).observe(document.documentElement); }
+  var n=0, t=setInterval(function(){ fit(); if(++n>20) clearInterval(t); },250);
 })();
 </script>
 </body>
