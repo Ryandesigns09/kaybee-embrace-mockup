@@ -214,7 +214,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15p
     e.preventDefault();
     var url=location.search.indexOf('base=')>-1 ? decodeURIComponent(location.search.split('base=')[1].split('&')[0]).replace(/\/$/,'')+href : href;
     try{ parent.postMessage({kvNav:href,url:url},'*'); }catch(err){}
-    setTimeout(function(){ window.open(url,'_blank','noopener'); },900);
+    window.open(url,'_blank','noopener'); /* Harmony editor has no Velo, so open the Wix page in a new tab */
   },true);
 })();
 </script>
