@@ -75,6 +75,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15p
 .donate{color:var(--sun);font-weight:600}
 @media(max-width:750px){:root{--vw:3.9px}.links{display:none}.navbtns .ghost{display:none}.menu{display:inline-flex}.row{grid-template-columns:1fr;gap:12px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.kay{grid-template-columns:1fr;gap:36px}.cls{grid-template-columns:1fr 1fr;gap:10px}.cls .when{grid-column:1/-1}.fgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:750px){.hero-grid{grid-template-columns:1fr;gap:28px;padding-top:36px}header.hero+section{padding-top:256px}.strip{margin-bottom:-60px}.cluster{height:380px}.c1{width:230px;height:230px;left:38%;top:0}.c2{width:170px;height:170px;left:2%;top:40%}.c3{width:110px;height:110px;left:64%;top:62%}.kayphoto{width:280px;height:280px}section{padding:64px 0}.steps{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}}
+@media(min-width:751px){.hero-grid{padding:24px 0 16px}.cluster{height:400px}.c1{width:240px;height:240px;left:44%;top:4%}.c2{width:175px;height:175px;left:8%;top:40%}.c3{width:110px;height:110px;left:68%;top:62%}h1{font-size:calc(5*var(--vw))}.hero-copy{gap:18px}}
 </style>
 </head>
 <body>
@@ -224,10 +225,25 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15p
     var a=e.target.closest&&e.target.closest('a[href]'); if(!a) return;
     var href=a.getAttribute('href'); if(!href||href.charAt(0)!=='/') return;
     e.preventDefault();
-    var url=location.search.indexOf('base=')>-1 ? decodeURIComponent(location.search.split('base=')[1].split('&')[0]).replace(/\/$/,'')+href : href;
+    var BASE='https://ryandesigns9.wixsite.com/my-site-1';
+    var m=location.search.match(/[?&]base=([^&]+)/); if(m) BASE=decodeURIComponent(m[1]).replace(/\/$/,'');
+    var url=BASE+href;
     try{ parent.postMessage({kvNav:href,url:url},'*'); }catch(err){}
     window.open(url,'_blank','noopener'); /* Harmony editor has no Velo, so open the Wix page in a new tab */
   },true);
+})();
+</script>
+<script>
+(function(){
+  var tog=document.querySelector('.toggle'); if(!tog) return;
+  var links=[].slice.call(document.querySelectorAll('.strip a.q'));
+  var sets={family:[['Find a doula →','/find-a-doula'],['Book lactation support →','/lactation'],['Browse classes →','/education']],
+            pro:[['Join the Collective →','/join-collective'],['CAPPA training →','/education'],['Mentorship →','/join-collective']]};
+  var spans=tog.querySelectorAll('span');
+  spans.forEach(function(sp,i){ sp.style.cursor='pointer'; sp.addEventListener('click',function(){
+    spans.forEach(function(x){x.classList.remove('on')}); sp.classList.add('on');
+    var set=i===0?sets.family:sets.pro; links.forEach(function(a,j){ if(set[j]){ a.textContent=set[j][0]; a.setAttribute('href',set[j][1]); } });
+  });});
 })();
 </script>
 </body>
